@@ -1,10 +1,11 @@
 # 快速排版系统 (Quick Type Setting)
 
-一个基于Node.js的前后端Web应用，通过DeepSeek API实现智能文本排版，并可将结果转换为Word文档。
+一个基于Node.js的前后端Web应用，通过DeepSeek API实现智能文本排版，并支持Word文档解析和转换。
 
 ## 功能特性
 
 - 📝 上传未排版的纯文本文件
+- 📄 **新增：支持Word文档(.docx)上传并自动提取文本**
 - 🎯 指定排版意图和要求
 - 🤖 调用DeepSeek API生成专业HTML排版
 - 📄 实时预览排版结果
@@ -18,6 +19,7 @@
 - DeepSeek API (AI排版)
 - Multer (文件上传)
 - html-to-docx (HTML转Word)
+- mammoth (Word文档解析)
 
 ### 前端
 - React.js
@@ -44,35 +46,41 @@
 
 ```bash
 # 克隆项目
-git clone <repository-url>
+git clone https://github.com/sericaa/QuickTypeSetting.git
 cd QuickTypeSetting
 
-# 安装依赖
-npm run install-all
+# 安装后端依赖
+npm install
+
+# 安装前端依赖
+cd client
+npm install
+cd ..
 
 # 配置环境变量
-cp .env.example .env
-# 编辑.env文件，填入您的DeepSeek API密钥
+# 创建.env文件并填入您的DeepSeek API密钥
 ```
 
 ### 4. 启动应用
 
 ```bash
-# 开发模式 (前后端同时运行)
+# 启动后端服务器
 npm run dev
 
-# 生产模式
+# 在另一个终端启动前端服务器
+cd client
 npm start
 ```
 
-应用将在 http://localhost:5000 启动
+后端将在 http://localhost:5001 启动，前端将在 http://localhost:3000 启动
 
 ## 使用指南
 
 ### 步骤1: 上传文本
 1. 点击"上传文本文件"按钮
-2. 选择您的.txt或.md文件
+2. 选择您的.txt、.md或.docx文件
 3. 文件大小限制：10MB
+4. **对于.docx文件，系统会自动提取文本内容**
 
 ### 步骤2: 指定排版意图
 在文本框中描述您的排版要求，例如：
@@ -104,7 +112,7 @@ POST /api/upload
 Content-Type: multipart/form-data
 
 参数:
-- textFile: 文本文件
+- textFile: 文本或Word文件
 - intent: 排版意图 (可选)
 ```
 
@@ -117,6 +125,7 @@ Content-Type: application/json
 - text: 文本内容
 - intent: 排版意图
 - filename: 原始文件名 (可选)
+- extractedText: 从Word文档提取的文本 (内部使用)
 ```
 
 ### Word转换
@@ -135,15 +144,14 @@ Content-Type: application/json
 QuickTypeSetting/
 ├── server.js              # 后端主文件
 ├── package.json          # 项目配置
-├── .env.example          # 环境变量示例
+├── .env                  # 环境变量配置
 ├── uploads/              # 文件上传目录
 └── client/               # React前端应用
     ├── public/
     ├── src/
-    │   ├── components/   # React组件
-    │   ├── pages/        # 页面组件
-    │   ├── services/     # API服务
-    │   └── App.js        # 主应用组件
+    │   ├── App.css       # 样式文件
+    │   ├── App.js        # 主应用组件
+    │   └── index.js      # 入口文件
     └── package.json
 ```
 
@@ -154,17 +162,7 @@ QuickTypeSetting/
 ```env
 # 必填: DeepSeek API密钥
 DEEPSEEK_API_KEY=sk-your-api-key-here
-
-# 可选: 服务器端口
-PORT=5000
-
-# 可选: 文件大小限制 (字节)
-MAX_FILE_SIZE=10485760
 ```
-
-### 自定义样式
-
-如需修改生成的HTML样式，编辑 `server.js` 中的CSS部分。
 
 ## 故障排除
 
@@ -178,67 +176,9 @@ MAX_FILE_SIZE=10485760
    - 检查文件大小是否超过限制
    - 确保uploads目录有写入权限
 
-3. **排版结果不理想**
-   - 尝试更详细的排版意图描述
-   - 检查原始文本格式是否清晰
-
-### 日志查看
-
-```bash
-# 查看服务器日志
-tail -f server.log
-
-# 查看错误日志
-cat error.log
-```
-
-## 开发指南
-
-### 添加新功能
-
-1. 在后端 `server.js` 中添加新的API端点
-2. 在前端 `client/src/services/api.js` 中添加对应的API调用
-3. 在 `client/src/components/` 中创建新的React组件
-
-### 测试
-
-```bash
-# 运行后端测试
-npm test
-
-# 运行前端测试
-cd client && npm test
-```
-
-## 部署
-
-### 传统部署
-
-```bash
-# 构建前端
-cd client && npm run build
-
-# 启动生产服务器
-npm start
-```
-
-### Docker部署
-
-```dockerfile
-FROM node:18-alpine
-
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm install --production
-
-COPY . .
-RUN cd client && npm install && npm run build
-
-EXPOSE 5000
-
-CMD ["npm", "start"]
-```
+3. **Word文档解析问题**
+   - 系统目前仅支持.docx格式，不支持.doc格式
+   - 复杂格式的Word文档可能无法完全解析
 
 ## 许可证
 
@@ -248,13 +188,8 @@ MIT License
 
 欢迎提交Issue和Pull Request！
 
-## 支持
-
-如有问题，请：
-1. 查看 [FAQ](#故障排除)
-2. 提交 [Issue](https://github.com/your-repo/issues)
-3. 联系维护者
-
 ---
 
 **提示**: 使用前请确保已获取有效的DeepSeek API密钥。
+
+项目地址：[github.com/sericaa/QuickTypeSetting](https://github.com/sericaa/QuickTypeSetting)
