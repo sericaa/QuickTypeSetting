@@ -1,0 +1,308 @@
+/* 全局样式 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* 布局样式 */
+.app-layout {
+  min-height: 100vh;
+  background: transparent;
+}
+
+.app-header {
+  background: rgba(0, 0, 0, 0.2) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+}
+
+.app-content {
+  padding: 24px;
+  min-height: calc(100vh - 64px - 70px);
+}
+
+.app-footer {
+  background: rgba(0, 0, 0, 0.2) !important;
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 16px 24px;
+}
+
+/* 容器样式 */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+/* 卡片样式 */
+.main-card {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+  overflow: hidden;
+}
+
+.step-card {
+  background: white !important;
+  border-radius: 12px !important;
+  border: 1px solid #f0f0f0 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.step-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08) !important;
+  transform: translateY(-2px);
+}
+
+.info-card {
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%) !important;
+  border: 1px solid rgba(102, 126, 234, 0.1) !important;
+  border-radius: 12px !important;
+}
+
+/* 步骤条样式 */
+.process-steps {
+  margin: 32px 0;
+  padding: 0 16px;
+}
+
+.process-steps .ant-steps-item-title {
+  font-weight: 600;
+}
+
+.process-steps .ant-steps-item-process .ant-steps-item-icon {
+  background: #1890ff;
+  border-color: #1890ff;
+}
+
+.process-steps .ant-steps-item-finish .ant-steps-item-icon {
+  background: #52c41a;
+  border-color: #52c41a;
+  color: white;
+}
+
+/* 上传区域样式 */
+.ant-upload-drag {
+  background: rgba(24, 144, 255, 0.05) !important;
+  border: 2px dashed #1890ff !important;
+  border-radius: 12px !important;
+  transition: all 0.3s ease;
+}
+
+.ant-upload-drag:hover {
+  background: rgba(24, 144, 255, 0.1) !important;
+  border-color: #40a9ff !important;
+}
+
+.ant-upload-drag-icon {
+  margin-bottom: 16px;
+}
+
+.ant-upload-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1890ff;
+  margin-bottom: 8px;
+}
+
+.ant-upload-hint {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+/* HTML预览样式 */
+.html-preview {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.html-preview h1 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.html-preview h2 {
+  color: #34495e;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.html-preview p {
+  margin-bottom: 15px;
+}
+
+.html-preview ul, .html-preview ol {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.html-preview code {
+  background: #f8f9fa;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.html-preview pre {
+  background: #2d3748;
+  color: #e2e8f0;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+.html-preview blockquote {
+  border-left: 4px solid #1890ff;
+  padding-left: 16px;
+  margin-left: 0;
+  color: #666;
+  font-style: italic;
+}
+
+/* 按钮样式增强 */
+.ant-btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  height: 40px;
+  padding: 0 24px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.ant-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4) !important;
+}
+
+.ant-btn-primary:disabled {
+  background: linear-gradient(135deg, #cccccc 0%, #999999 100%) !important;
+  color: rgba(0, 0, 0, 0.25) !important;
+}
+
+/* 标签样式 */
+.ant-tag {
+  border-radius: 6px !important;
+  padding: 2px 12px;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.ant-tag:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .app-content {
+    padding: 16px;
+  }
+  
+  .container {
+    padding: 0 8px;
+  }
+  
+  .process-steps {
+    margin: 20px 0;
+    padding: 0 8px;
+  }
+  
+  .ant-steps-horizontal:not(.ant-steps-label-vertical) .ant-steps-item {
+    margin-right: 8px !important;
+  }
+  
+  .ant-steps-item-title {
+    font-size: 12px !important;
+  }
+  
+  .ant-steps-item-description {
+    display: none;
+  }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 126, 234, 0.7);
+}
+
+/* 加载动画 */
+.ant-spin-dot {
+  color: #667eea;
+}
+
+.ant-spin-text {
+  color: #667eea;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+/* 描述列表样式 */
+.ant-descriptions-bordered .ant-descriptions-item-label {
+  background: #fafafa;
+  font-weight: 600;
+}
+
+.ant-descriptions-bordered .ant-descriptions-item-content {
+  background: white;
+}
