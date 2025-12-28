@@ -4,28 +4,28 @@
 
 ## 功能特性
 
-- 📝 上传未排版的纯文本文件
-- 📄 **新增：支持Word文档(.docx)上传并自动提取文本**
-- 🎯 指定排版意图和要求
-- 🤖 调用DeepSeek API生成专业HTML排版
-- 📄 实时预览排版结果
-- 📥 一键下载为Word文档
-- 🎨 响应式现代UI设计
+上传未排版的纯文本文件
+支持Word文档(.docx)上传并自动提取文本
+指定排版意图和要求
+调用DeepSeek API生成专业HTML排版
+实时预览排版结果
+一键下载为Word文档
+响应式现代UI设计
 
 ## 技术栈
 
 ### 后端
 - Node.js + Express
-- DeepSeek API (AI排版)
-- Multer (文件上传)
-- html-to-docx (HTML转Word)
-- mammoth (Word文档解析)
+- DeepSeek API 
+- Multer 
+- html-to-docx
+- mammoth
 
 ### 前端
 - React.js
-- Axios (API调用)
-- Ant Design (UI组件)
-- React Router (路由)
+- Axios 
+- Ant Design 
+- React Router 
 
 ## 快速开始
 
